@@ -4,6 +4,7 @@ import router from './router.js'
 import './plugins/element.js'
 
 import './assets/scss/style.scss'
+import './assets/icons/iconfont.css'
 
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 // require styles
