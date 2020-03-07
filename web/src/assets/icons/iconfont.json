@@ -13,6 +13,20 @@
       "unicode_decimal": 58994
     },
     {
+      "icon_id": "577339",
+      "name": "攻略",
+      "font_class": "gonglve",
+      "unicode": "e73b",
+      "unicode_decimal": 59195
+    },
+    {
+      "icon_id": "1632556",
+      "name": "视频",
+      "font_class": "shipin",
+      "unicode": "e6c9",
+      "unicode_decimal": 59081
+    },
+    {
       "icon_id": "6338860",
       "name": "back",
       "font_class": "back",
