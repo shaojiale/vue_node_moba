@@ -144,7 +144,6 @@ export default {
     UploadSuccess(res) {
       this.$set(this.model, "avatar", res.url);
       this.model.avatar = res.url;
-      console.log("success");
     },
     async fetchCategories() {
       const res = await this.$http.get(`rest/categories/`);

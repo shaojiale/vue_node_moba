@@ -23,7 +23,7 @@ module.exports = app => {
         if (req.Model.modelName === 'Category') {
             queryOptions.populate = 'parent'
         }
-        const items = await req.Model.find().setOptions(queryOptions).limit(10);
+        const items = await req.Model.find().setOptions(queryOptions).limit(100);
         res.send(items)
     })
 
@@ -54,24 +54,13 @@ module.exports = app => {
         const password = req.body.password;
         const user = await AdminUser.findOne({ name: username }).select('+password')
         assert(user, 422, '用户不存在')
-        // if (!user) {
-        //     return res.status(422).send({
-        //         message: '用户不存在'
-        //     })
-        // }
         const isValid = require('bcrypt').compareSync(password, user.password)
         assert(isValid, 422, '密码错误')
-        // if (!isValid) {
-        //     return res.status(422).send({
-        //         message: '密码错误'
-        //     })
-        // }
         const token = jwt.sign({ id: user._id }, app.get('secret'))
         res.send({ token })
     })
     //错误处理
     app.use(async function (err, req, res, next) {
-        console.log(err)
         res.status(err.statusCode || 500).send({
             message: err.message
         })

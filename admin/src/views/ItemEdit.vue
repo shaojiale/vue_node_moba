@@ -56,7 +56,6 @@ export default {
     UploadSuccess(res) {
       this.$set(this.model, "icon", res.url);
       this.model.icon = res.url;
-      console.log("success");
     }
   },
   created() {

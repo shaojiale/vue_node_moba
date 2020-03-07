@@ -13,7 +13,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="标题">
-        <el-input v-model="model.name"></el-input>
+        <el-input v-model="model.title"></el-input>
       </el-form-item>
       <el-form-item label="内容">
         <template>

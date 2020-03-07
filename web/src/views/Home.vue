@@ -28,11 +28,11 @@
 
     <list-card icon="cc-menu-circle" title="新闻资讯" :categories="newcats">
       <template #items="{category}">
-        <div v-for="(items,n) in category.newsList" :key="n" class="py-2">
-          <span>[{{items.categoryName}}]</span>
+        <div class="py-2 fs-md d-flex" v-for="(items,n) in category.newsList" :key="n">
+          <span class="text-info">[{{items.categoryName}}]</span>
           <span>|</span>
-          <span class="flex-1">{{items.title}}</span>
-          <span>{{items.date}}</span>
+          <span class="flex-1 text-ellipsis pr-2">{{items.title}}</span>
+          <span class="text-grey-1 fs-sm">{{items.updatedAt | date }}</span>
         </div>
       </template>
     </list-card>
@@ -43,7 +43,13 @@
 </template>
 
 <script>
+import dayjs from "dayjs";
 export default {
+  filters: {
+    date(val) {
+      return dayjs(val).format("MM/DD");
+    }
+  },
   data() {
     return {
       swiperOption: {
@@ -51,159 +57,17 @@ export default {
           el: " .pagination-home"
         }
       },
-      newcats: [
-        {
-          name: "热门",
-          newsList: [
-            {
-              categoryName: "公告",
-              title: "王者营地登陆异常问题说明",
-              date: "03/05"
-            },
-            {
-              categoryName: "公告1",
-              title: "王者营地登陆异常问题说明",
-              date: "03/05"
-            },
-            {
-              categoryName: "公告2",
-              title: "王者营地登陆异常问题说明",
-              date: "03/05"
-            },
-            {
-              categoryName: "公告3",
-              title: "王者营地登陆异常问题说明",
-              date: "03/05"
-            },
-            {
-              categoryName: "公告4",
-              title: "王者营地登陆异常问题说明",
-              date: "03/05"
-            }
-          ]
-        },
-        {
-          name: "新闻",
-          newsList: [
-            {
-              categoryName: "新闻",
-              title: "王者营地登陆异常问题说明",
-              date: "03/05"
-            },
-            {
-              categoryName: "新闻1",
-              title: "王者营地登陆异常问题说明",
-              date: "03/05"
-            },
-            {
-              categoryName: "新闻2",
-              title: "王者营地登陆异常问题说明",
-              date: "03/05"
-            },
-            {
-              categoryName: "新闻3",
-              title: "王者营地登陆异常问题说明",
-              date: "03/05"
-            },
-            {
-              categoryName: "新闻4",
-              title: "王者营地登陆异常问题说明",
-              date: "03/05"
-            }
-          ]
-        },
-        {
-          name: "公告",
-          newsList: [
-            {
-              categoryName: "公告",
-              title: "王者营地登陆异常问题说明",
-              date: "03/05"
-            },
-            {
-              categoryName: "公告1",
-              title: "王者营地登陆异常问题说明",
-              date: "03/05"
-            },
-            {
-              categoryName: "公告2",
-              title: "王者营地登陆异常问题说明",
-              date: "03/05"
-            },
-            {
-              categoryName: "公告3",
-              title: "王者营地登陆异常问题说明",
-              date: "03/05"
-            },
-            {
-              categoryName: "公告4",
-              title: "王者营地登陆异常问题说明",
-              date: "03/05"
-            }
-          ]
-        },
-        {
-          name: "活动",
-          newsList: [
-            {
-              categoryName: "活动",
-              title: "王者营地登陆异常问题说明",
-              date: "03/05"
-            },
-            {
-              categoryName: "活动1",
-              title: "王者营地登陆异常问题说明",
-              date: "03/05"
-            },
-            {
-              categoryName: "活动2",
-              title: "王者营地登陆异常问题说明",
-              date: "03/05"
-            },
-            {
-              categoryName: "活动3",
-              title: "王者营地登陆异常问题说明",
-              date: "03/05"
-            },
-            {
-              categoryName: "活动4",
-              title: "王者营地登陆异常问题说明",
-              date: "03/05"
-            }
-          ]
-        },
-        {
-          name: "赛事",
-          newsList: [
-            {
-              categoryName: "赛事",
-              title: "王者营地登陆异常问题说明",
-              date: "03/05"
-            },
-            {
-              categoryName: "赛事2",
-              title: "王者营地登陆异常问题说明",
-              date: "03/05"
-            },
-            {
-              categoryName: "赛事4",
-              title: "王者营地登陆异常问题说明",
-              date: "03/05"
-            },
-            {
-              categoryName: "赛事1",
-              title: "王者营地登陆异常问题说明",
-              date: "03/05"
-            },
-            {
-              categoryName: "赛事5",
-              title: "王者营地登陆异常问题说明",
-              date: "03/05"
-            }
-          ]
-        }
-      ]
+      newcats: []
     };
+  },
+  methods: {
+    async fetchNewsCats() {
+      const res = await this.$http.get("news/list");
+      this.newcats = res.data;
+    }
+  },
+  created() {
+    this.fetchNewsCats();
   }
 };
 </script>
