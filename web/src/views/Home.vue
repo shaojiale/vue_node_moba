@@ -10,7 +10,10 @@
       <swiper-slide>
         <img class="w-100" src="../assets/imgs/guanggao2.jpeg" alt />
       </swiper-slide>
-      <div class="swiper-pagination pagination-home text-right" slot="pagination"></div>
+      <div
+        class="swiper-pagination pagination-home text-right"
+        slot="pagination"
+      ></div>
     </swiper>
 
     <div class="nav-icons bg-white mt-3 text-center pt-3">
@@ -28,15 +31,37 @@
 
     <list-card icon="cc-menu-circle" title="新闻资讯" :categories="newcats">
       <template #items="{category}">
-        <div class="py-2 fs-md d-flex" v-for="(items,n) in category.newsList" :key="n">
-          <span class="text-info">[{{items.categoryName}}]</span>
-          <span>|</span>
-          <span class="flex-1 text-ellipsis pr-2">{{items.title}}</span>
-          <span class="text-grey-1 fs-sm">{{items.updatedAt | date }}</span>
+        <router-link
+          tag="div"
+          :to="`/article/${news._id}`"
+          class="py-2 fs-md d-flex"
+          v-for="(news, n) in category.newsList"
+          :key="n"
+        >
+          <span class="text-info">[{{ news.categoryName }}]</span>
+          <span class="px-2">|</span>
+          <span class="flex-1 text-ellipsis pr-2">{{ news.title }}</span>
+          <span class="text-grey-1 fs-sm">{{ news.updatedAt | date }}</span>
+        </router-link>
+      </template>
+    </list-card>
+
+    <list-card icon="card-hero" title="英雄列表" :categories="herocats">
+      <template #items="{category}">
+        <div class="d-flex flex-wrap" style="margin: 0 -0.5rem">
+          <div
+            class="p-2 text-center"
+            style="width: 20%"
+            v-for="(hero, n) in category.heroesList"
+            :key="n"
+          >
+            <img :src="hero.avatar" class="w-100" />
+            <div>{{ hero.name }}</div>
+          </div>
         </div>
       </template>
     </list-card>
-    <list-card icon="card-hero" title="英雄列表"></list-card>
+
     <list-card icon="shipin" title="精彩视频"></list-card>
     <list-card icon="gonglve" title="图文攻略"></list-card>
   </div>
@@ -57,24 +82,29 @@ export default {
           el: " .pagination-home"
         }
       },
-      newcats: []
+      newcats: [],
+      herocats: []
     };
   },
   methods: {
     async fetchNewsCats() {
       const res = await this.$http.get("news/list");
       this.newcats = res.data;
+    },
+    async fetchHeroesCats() {
+      const res = await this.$http.get("heroes/list");
+      this.herocats = res.data;
     }
   },
   created() {
     this.fetchNewsCats();
+    this.fetchHeroesCats();
   }
 };
 </script>
 
 <style lang="scss">
 @import "../assets/scss/variables";
-
 .pagination-home {
   .swiper-pagination-bullet {
     opacity: 1;
@@ -95,22 +125,6 @@ export default {
     &:nth-child(4n) {
       border-right: none;
     }
-  }
-}
-
-.sprite {
-  background: url(../assets/imgs/sprite.png) no-repeat 0 0;
-  background-size: 28.8462rem;
-  display: inline-block;
-  &.sprite-news {
-    width: 1.7692rem;
-    height: 1.5385rem;
-    background-position: 63.546% 15.517%;
-  }
-  &.sprite-arrows {
-    width: 0.7692rem;
-    height: 0.7692rem;
-    background-position: 38.577% 52.076%;
   }
 }
 </style>

@@ -3,17 +3,21 @@
     <div class="nav jc-between">
       <div
         class="nav-item"
-        :class="{active:active===i}"
-        v-for="(category,i) in categories"
+        :class="{ active: active === i }"
+        v-for="(category, i) in categories"
         :key="i"
         @click="$refs.list.swiper.slideTo(i)"
       >
-        <div class="nav-link">{{category.name}}</div>
+        <div class="nav-link">{{ category.name }}</div>
       </div>
     </div>
     <div class="pt-3">
-      <swiper ref="list" @slide-change="()=>active= $refs.list.swiper.realIndex ">
-        <swiper-slide v-for="(category,i) in categories" :key="i">
+      <swiper
+        ref="list"
+        :options="{autoHeight:true}"
+        @slide-change="() => (active = $refs.list.swiper.realIndex)"
+      >
+        <swiper-slide v-for="(category, i) in categories" :key="i">
           <slot name="items" :category="category"></slot>
         </swiper-slide>
       </swiper>
@@ -36,7 +40,7 @@ export default {
 };
 </script>
 
-<style lang = "scss">
+<style lang="scss">
 @import "../assets/scss/_variables.scss";
 .card {
   .card-header {

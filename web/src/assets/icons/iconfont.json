@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "180971",
+      "name": "相关",
+      "font_class": "xiangguan",
+      "unicode": "e67d",
+      "unicode_decimal": 59005
+    },
+    {
       "icon_id": "372210",
       "name": "cc-menu-circle",
       "font_class": "cc-menu-circle",
@@ -25,6 +32,13 @@
       "font_class": "shipin",
       "unicode": "e6c9",
       "unicode_decimal": 59081
+    },
+    {
+      "icon_id": "3139568",
+      "name": "相关",
+      "font_class": "icon-test",
+      "unicode": "e624",
+      "unicode_decimal": 58916
     },
     {
       "icon_id": "6338860",

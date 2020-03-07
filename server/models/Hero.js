@@ -4,16 +4,18 @@ const schema = new mongoose.Schema({
     name: { type: String },
     avatar: { type: String },
     title: { type: String },
-    category: [{ type: mongoose.SchemaTypes.ObjectId, ref: 'Category' }],
+    categories: [{ type: mongoose.SchemaTypes.ObjectId, ref: 'Category' }],
     scores: {
         difficult: { type: Number },
-        skill: { type: Number },
+        skills: { type: Number },
         attack: { type: Number },
         survive: { type: Number },
     },
     skills: [{
         icon: { type: String },
         name: { type: String },
+        delay: { type: String },
+        cost: { type: String },
         description: { type: String },
         tips: { type: String }
     }],
@@ -29,4 +31,4 @@ const schema = new mongoose.Schema({
 
 })
 
-module.exports = mongoose.model('Hero', schema)
+module.exports = mongoose.model('Hero', schema, 'heroes')

@@ -23,7 +23,7 @@
             </el-upload>
           </el-form-item>
           <el-form-item label="英雄分类">
-            <el-select v-model="model.category" multiple>
+            <el-select v-model="model.categories" multiple>
               <el-option
                 v-for="item in categories"
                 :key="item._id"
