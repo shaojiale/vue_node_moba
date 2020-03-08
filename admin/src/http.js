@@ -1,33 +1,40 @@
-import axios from 'axios'
-import Vue from 'vue'
-import router from './router'
+import axios from "axios";
+import Vue from "vue";
+import router from "./router";
 //后端路由的基地址
 const http = axios.create({
-    baseURL: 'http://localhost:3000/admin/api'
-})
-http.interceptors.request.use(function (config) {
+  baseURL: process.env.VUE_APP_API_URL || "/admin/api"
+  // baseURL: 'http://localhost:3000/admin/api'
+});
+http.interceptors.request.use(
+  function(config) {
     // Do something before request is sent
     if (localStorage.token) {
-        config.headers.Authorization = 'Bearer ' + localStorage.token
+      config.headers.Authorization = "Bearer " + localStorage.token;
     }
     return config;
-}, function (error) {
+  },
+  function(error) {
     // Do something with request error
     return Promise.reject(error);
-});
+  }
+);
 
-http.interceptors.response.use(res => {
-    return res
-}, err => {
+http.interceptors.response.use(
+  res => {
+    return res;
+  },
+  err => {
     if (err.response.data.message) {
-        Vue.prototype.$message({
-            type: 'error',
-            message: err.response.data.message
-        })
+      Vue.prototype.$message({
+        type: "error",
+        message: err.response.data.message
+      });
     }
     if (err.response.status === 401) {
-        router.push('/login')
+      router.push("/login");
     }
-    return Promise.reject(err)
-})
-export default http
+    return Promise.reject(err);
+  }
+);
+export default http;
