@@ -4,8 +4,17 @@
       class="d-flex fs-sm py-3 px-2 text-blue bg-light border-bottom"
       style=" border-bottom: 1px solid $border-color;"
     >
-      <div class="iconfont icon-back"></div>
-      <div class="flex-1 text-ellipsis pr-2">{{ model.title }}</div>
+      <router-link
+        router-link
+        tag="div"
+        :to="`/`"
+        class="d-flex flex-1 pr-2 text-ellipsis "
+      >
+        <div class="iconfont icon-back"></div>
+        <div class="text-ellipsis pr-2">
+          {{ model.title }}
+        </div></router-link
+      >
       <div class="text-grey">{{ model.updatedAt | date }}</div>
     </div>
     <div v-html="model.body" class="px-3 body fs-lg"></div>

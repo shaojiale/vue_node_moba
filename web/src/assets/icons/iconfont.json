@@ -13,11 +13,25 @@
       "unicode_decimal": 59005
     },
     {
+      "icon_id": "337745",
+      "name": "技巧",
+      "font_class": "icon",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
       "icon_id": "372210",
       "name": "cc-menu-circle",
       "font_class": "cc-menu-circle",
       "unicode": "e672",
       "unicode_decimal": 58994
+    },
+    {
+      "icon_id": "451955",
+      "name": "团队 灰",
+      "font_class": "tuanduihui",
+      "unicode": "e8b4",
+      "unicode_decimal": 59572
     },
     {
       "icon_id": "577339",
@@ -27,18 +41,18 @@
       "unicode_decimal": 59195
     },
     {
+      "icon_id": "1262786",
+      "name": "队友",
+      "font_class": "duiyou",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
       "icon_id": "1632556",
       "name": "视频",
       "font_class": "shipin",
       "unicode": "e6c9",
       "unicode_decimal": 59081
-    },
-    {
-      "icon_id": "3139568",
-      "name": "相关",
-      "font_class": "icon-test",
-      "unicode": "e624",
-      "unicode_decimal": 58916
     },
     {
       "icon_id": "6338860",
@@ -51,8 +65,15 @@
       "icon_id": "6450855",
       "name": "menu",
       "font_class": "menu",
-      "unicode": "e603",
-      "unicode_decimal": 58883
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "6488686",
+      "name": "bo_fang",
+      "font_class": "bo_fang",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
     },
     {
       "icon_id": "6654507",
@@ -60,6 +81,27 @@
       "font_class": "card-hero",
       "unicode": "e61f",
       "unicode_decimal": 58911
+    },
+    {
+      "icon_id": "8483081",
+      "name": "对抗-VS",
+      "font_class": "duikang-VS",
+      "unicode": "e699",
+      "unicode_decimal": 59033
+    },
+    {
+      "icon_id": "11334619",
+      "name": "上传图片",
+      "font_class": "tupian",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
+      "icon_id": "13050822",
+      "name": "装备",
+      "font_class": "zhuangbei",
+      "unicode": "e623",
+      "unicode_decimal": 58915
     }
   ]
 }
