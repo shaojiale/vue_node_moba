@@ -97,7 +97,47 @@
           </div>
 
           <!-- 出装推荐 -->
-          <m-card icon="card-zhuangbei" title="出装推荐"></m-card>
+          <m-card plain icon="zhuangbei" title="出装推荐" class="hero-items">
+            <div class="fs-sm">顺风出装</div>
+            <div class="d-flex jc-around text-center">
+              <div v-for="item in model.items1" :key="item.name">
+                <img class="icon" :src="item.icon" />
+                <div>{{ item.name }}</div>
+              </div>
+            </div>
+            <div class="border-bottom mt-3 mb-3"></div>
+            <div class="fs-sm">逆风出装</div>
+            <div class="d-flex jc-around text-center">
+              <div v-for="item in model.items2" :key="item.name">
+                <img class="icon" :src="item.icon" />
+                <div>{{ item.name }}</div>
+              </div>
+            </div>
+          </m-card>
+
+          <!-- 使用技巧 对抗技巧 团战思路 -->
+          <m-card plain icon="icon" title="使用技巧">
+            <p class="m-0">{{ model.usagetips }}</p>
+          </m-card>
+          <m-card plain icon="duikang-VS" title="对抗技巧">
+            <p class="m-0">{{ model.battletips }}</p></m-card
+          >
+          <m-card plain icon="tuanduihui" title="团战思路">
+            <p class="m-0">{{ model.teamtips }}</p></m-card
+          >
+          <!-- 英雄关系 -->
+          <m-card plain icon="duiyou" title="英雄关系">
+            <div class="fs-xl">最佳搭档</div>
+            <div
+              v-for="item in model.partners"
+              :key="item.name"
+              class="d-flex pt-3"
+            >
+              <img :src="item.hero.avatar" height="50" />
+              <div class="flex-1 m-0 ml-3">{{ item.description }}</div>
+            </div>
+            <div class="border-bottom mt-3"></div>
+          </m-card>
         </swiper-slide>
         <swiper-slide>
           进阶攻略
@@ -160,15 +200,23 @@ export default {
       }
     }
   }
-}
-.skills {
-  img.icon {
-    width: 70px;
-    height: 70px;
-    border: 3px solid map-get($colors, "white");
-    &.active {
-      border: 3px solid map-get($colors, "primary");
-      border-radius: 45%;
+  .skills {
+    img.icon {
+      width: 70px;
+      height: 70px;
+      border: 3px solid map-get($colors, "white");
+      &.active {
+        border: 3px solid map-get($colors, "primary");
+        border-radius: 45%;
+      }
+    }
+  }
+  .hero-items {
+    img.icon {
+      width: 50px;
+      height: 50px;
+      border: 3px solid map-get($colors, "white");
+      border-radius: 50%;
     }
   }
 }

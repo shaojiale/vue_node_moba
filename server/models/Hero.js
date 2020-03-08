@@ -29,7 +29,7 @@ const schema = new mongoose.Schema({
   teamtips: { type: String },
   partners: [
     {
-      hreo: { type: mongoose.SchemaTypes.ObjectId, ref: "Hero" },
+      hero: { type: mongoose.SchemaTypes.ObjectId, ref: "Hero" },
       description: { type: String }
     }
   ]
