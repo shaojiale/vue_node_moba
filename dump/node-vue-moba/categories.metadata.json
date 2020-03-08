@@ -1,1 +1,1 @@
-{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"node-vue-moba.categories"}],"uuid":"c75e8290f8b048c1822d8b0dc94586be"}
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"node-vue-moba.categories"}],"uuid":"9c740ab5f9b74f02aab1a06eaba1745e"}
